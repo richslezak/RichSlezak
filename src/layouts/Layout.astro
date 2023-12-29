@@ -1,40 +1,119 @@
 ---
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_AUTHOR, SITE_URL } from '../config';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={SITE_URL} />
+    <meta name="description" content={SITE_DESCRIPTION} />
+    <meta name="keywords" content={SITE_KEYWORDS} />
+    <meta name="author" content={SITE_AUTHOR} />
+    <title>{SITE_TITLE}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Styles/reboot.scss" />
   </head>
   <body>
     <slot />
   </body>
 </html>
-<style is:global>
+<style is:global lang="scss">
   :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    line-height: 1.5;
+    --color_1: #fff;
+    --color_2: #f0f0f0;
+    --color_3: #f2490e;
+    --color_4: rgba(60, 60, 60, 0.7);
   }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
   html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    color: var(--color_2);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
+    height: 100%;
+    background: linear-gradient(to bottom, #3d6193 0%, #81acdd 75%, #9bc2e4 100%);
+    background-attachment: fixed;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    color: var(--color_1);
+    &:visited {
+      color: var(--color_1);
+    }
+    &:hover {
+      color: var(--color_3);
+    }
+    &:active {
+      color: var(--color_3);
+    }
+  }
+
+  .fixed {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 750px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      max-width: 970px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1170px;
+    }
   }
 </style>
