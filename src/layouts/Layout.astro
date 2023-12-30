@@ -1,5 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_AUTHOR, SITE_URL } from '../config';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!DOCTYPE html>
@@ -26,7 +28,9 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_AUTHOR, SITE_URL } fr
     <link rel="stylesheet" href="/Styles/reboot.scss" />
   </head>
   <body>
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>
 <style is:global lang="scss">
@@ -88,7 +92,6 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_AUTHOR, SITE_URL } fr
     position: fixed;
     right: 0;
     left: 0;
-    z-index: 1030;
   }
 
   .container {
