@@ -1,9 +1,9 @@
 <header class="fixed">
   <div class="container">
     <url-based-heading>
-      <noscript>
-        <h1>Rich Slezak</h1>
-      </noscript>
+      <!-- <noscript> -->
+      <h1>Rich Slezakkkkkkkkk</h1>
+      <!-- </noscript> -->
       <script>
         customElements.define(
           'url-based-heading',
@@ -11,6 +11,7 @@
             connectedCallback() {
               const url = window.location.href;
               const domainName = new URL(url).hostname;
+              const heading = document.querySelector('h1');
               let headingText;
 
               switch (domainName) {
@@ -27,7 +28,9 @@
                   headingText = 'Rich Slezak';
               }
 
-              this.innerHTML = `${headingText}`;
+              if (heading) {
+                heading.innerText = `${headingText}`;
+              }
             }
           }
         );
