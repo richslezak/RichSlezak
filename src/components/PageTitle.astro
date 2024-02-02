@@ -1,0 +1,43 @@
+<url-based-heading>
+  <noscript>
+    <h1>Rich Slezak</h1>
+  </noscript>
+  <script>
+    customElements.define(
+      'url-based-heading',
+      class extends HTMLElement {
+        connectedCallback() {
+          const url = window.location.href;
+          const domainName = new URL(url).hostname;
+          let headingText;
+
+          switch (domainName) {
+            case 'richardslezak.com':
+              headingText = 'Richard Slezak';
+              break;
+            case 'richardjslezak.com':
+              headingText = 'Richard J Slezak';
+              break;
+            case 'rjslezak.com':
+              headingText = 'R J Slezak';
+              break;
+            default:
+              headingText = 'Rich Slezak';
+          }
+
+          this.innerHTML = `${headingText}`;
+        }
+      }
+    );
+  </script>
+  <style>
+    h1,
+    url-based-heading {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--color_1);
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</url-based-heading>
