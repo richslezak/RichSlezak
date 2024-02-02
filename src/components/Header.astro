@@ -1,6 +1,7 @@
 <header class="fixed">
   <div class="container">
-    <h1>Richard Slezak</h1>
+    <!-- <h1>Richard Slezak</h1> -->
+    <url-based-heading></url-based-heading>
     <ul>
       <li>
         <a
@@ -169,7 +170,8 @@
     justify-content: space-between;
   }
 
-  h1 {
+  h1,
+  url-based-heading {
     font-size: 1.8rem;
     font-weight: 400;
     color: var(--color_1);
@@ -193,3 +195,35 @@
     }
   }
 </style>
+
+<script>
+  customElements.define(
+    'url-based-heading',
+    class extends HTMLElement {
+      connectedCallback() {
+        const url = window.location.href;
+        const domainName = new URL(url).hostname;
+        let headingText;
+
+        switch (domainName) {
+          case 'www.richslezak.com':
+            headingText = 'Rich Slezak';
+            break;
+          case 'www.richardslezak.com':
+            headingText = 'Richard Slezak';
+            break;
+          case 'www.richardjslezak.com':
+            headingText = 'Richard J Slezak';
+            break;
+          case 'www.rjslezak.com':
+            headingText = 'R J Slezak';
+            break;
+          default:
+            headingText = 'Rich Slezak';
+        }
+
+        this.innerHTML = `${headingText}`;
+      }
+    }
+  );
+</script>
