@@ -1,39 +1,10 @@
+---
+import SiteName from './SiteName.astro';
+---
+
 <header class="fixed">
   <div class="container">
-    <url-based-heading>
-      <h1>Rich Slezak</h1>
-      <script>
-        customElements.define(
-          'url-based-heading',
-          class extends HTMLElement {
-            connectedCallback() {
-              const url = window.location.href;
-              const domainName = new URL(url).hostname;
-              const heading = this.querySelector('h1');
-              let headingText;
-
-              switch (domainName) {
-                case 'richardslezak.com':
-                  headingText = 'Richard Slezak';
-                  break;
-                case 'richardjslezak.com':
-                  headingText = 'Richard J Slezak';
-                  break;
-                case 'rjslezak.com':
-                  headingText = 'R J Slezak';
-                  break;
-                default:
-                  headingText = 'Rich Slezak';
-              }
-
-              if (heading) {
-                heading.innerText = headingText;
-              }
-            }
-          }
-        );
-      </script>
-    </url-based-heading>
+    <h1><SiteName /></h1>
     <ul>
       <li>
         <a
@@ -202,8 +173,7 @@
     justify-content: space-between;
   }
 
-  h1,
-  url-based-heading {
+  h1 {
     font-size: 1.8rem;
     font-weight: 400;
     color: var(--color_1);

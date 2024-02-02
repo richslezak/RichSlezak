@@ -1,11 +1,14 @@
 ---
 const today = new Date();
+import SiteName from './SiteName.astro';
 ---
 
 <footer class="fixed">
   <div class="container">
     <p>
-      &copy; {today.getFullYear()} richslezak.com <span>- All rights reserved.</span>
+      &copy; {today.getFullYear()}
+      <SiteName />
+      <span class="legal-text">- All rights reserved.</span>
     </p>
   </div>
 </footer>
@@ -27,12 +30,12 @@ const today = new Date();
     padding: 0;
   }
 
-  span {
+  .legal-text {
     display: none;
   }
 
   @media (min-width: 400px) {
-    span {
+    .legal-text {
       display: inline-block;
     }
   }
