@@ -1,7 +1,42 @@
 <header class="fixed">
   <div class="container">
     <!-- <h1>Richard Slezak</h1> -->
-    <url-based-heading></url-based-heading>
+    <url-based-heading>
+      <noscript>
+        <h1>Rich Slezak!!!</h1>
+      </noscript>
+      <script>
+        customElements.define(
+          'url-based-heading',
+          class extends HTMLElement {
+            connectedCallback() {
+              const url = window.location.href;
+              const domainName = new URL(url).hostname;
+              let headingText;
+
+              switch (domainName) {
+                // case 'richslezak.com':
+                //   headingText = 'Rich Slezak';
+                //   break;
+                case 'richardslezak.com':
+                  headingText = 'Richard Slezak';
+                  break;
+                case 'richardjslezak.com':
+                  headingText = 'Richard J Slezak';
+                  break;
+                case 'rjslezak.com':
+                  headingText = 'R J Slezak';
+                  break;
+                default:
+                  headingText = 'Rich Slezak';
+              }
+
+              this.innerHTML = `${headingText}`;
+            }
+          }
+        );
+      </script>
+    </url-based-heading>
     <ul>
       <li>
         <a
@@ -195,35 +230,3 @@
     }
   }
 </style>
-
-<script>
-  customElements.define(
-    'url-based-heading',
-    class extends HTMLElement {
-      connectedCallback() {
-        const url = window.location.href;
-        const domainName = new URL(url).hostname;
-        let headingText;
-
-        switch (domainName) {
-          case 'richslezak.com':
-            headingText = 'Rich Slezak';
-            break;
-          case 'richardslezak.com':
-            headingText = 'Richard Slezak';
-            break;
-          case 'richardjslezak.com':
-            headingText = 'Richard J Slezak';
-            break;
-          case 'rjslezak.com':
-            headingText = 'R J Slezak';
-            break;
-          default:
-            headingText = 'Rich Slezak';
-        }
-
-        this.innerHTML = `${headingText}`;
-      }
-    }
-  );
-</script>
