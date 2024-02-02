@@ -9,7 +9,7 @@
             connectedCallback() {
               const url = window.location.href;
               const domainName = new URL(url).hostname;
-              const heading = document.querySelector('h1');
+              const heading = this.querySelector('h1');
               let headingText;
 
               switch (domainName) {
